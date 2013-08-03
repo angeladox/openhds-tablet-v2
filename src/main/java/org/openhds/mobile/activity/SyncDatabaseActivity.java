@@ -1,5 +1,8 @@
 package org.openhds.mobile.activity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openhds.mobile.R;
 import org.openhds.mobile.listener.CollectEntitiesListener;
 import org.openhds.mobile.task.SyncEntitiesTask;
@@ -34,13 +37,14 @@ public class SyncDatabaseActivity extends Activity implements CollectEntitiesLis
     private String url;
     private String username;
     private String password;
+    private List<String> hierarchyLevelNames;
 		
 	public void onCreate(Bundle savedInstanceState) {
 		 super.onCreate(savedInstanceState);
 		 setTitle(getString(R.string.app_name) + " > " + getString(R.string.syncDatabase));
 		 //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		 setContentView(R.layout.sync_database);
-		 
+		 hierarchyLevelNames = new ArrayList<String>();
 		 PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		 wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "DoNotDimScreen");
 	   	 
@@ -101,10 +105,10 @@ public class SyncDatabaseActivity extends Activity implements CollectEntitiesLis
 			
 			entitiesTask = new SyncEntitiesTask(url, username, password,
 					dialog, getBaseContext(), SyncDatabaseActivity.this);
+
 		}
 		if (entitiesTask.getStatus() == Status.PENDING)
 			entitiesTask.execute();
-
 	}
 	
 	@Override

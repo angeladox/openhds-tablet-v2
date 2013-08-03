@@ -35,6 +35,11 @@ public class LocationVisit implements Serializable {
     private LocationHierarchy hierarchy2;
     private LocationHierarchy hierarchy3;
     private LocationHierarchy hierarchy4;
+    private LocationHierarchy hierarchy5;
+    private LocationHierarchy hierarchy6;
+    private LocationHierarchy hierarchy7;
+    private LocationHierarchy hierarchy8;
+    private LocationHierarchy hierarchy9;
     private Round round;
 
     private Location location;
@@ -75,6 +80,22 @@ public class LocationVisit implements Serializable {
 
     public LocationHierarchy getHierarchy4() {
         return hierarchy4;
+    }
+    
+    public LocationHierarchy getHierarchy5() {
+        return hierarchy5;
+    }
+    public LocationHierarchy getHierarchy6() {
+        return hierarchy6;
+    }
+    public LocationHierarchy getHierarchy7() {
+        return hierarchy7;
+    }
+    public LocationHierarchy getHierarchy8() {
+        return hierarchy8;
+    }
+    public LocationHierarchy getHierarchy9() {
+        return hierarchy9;
     }
 
     public Round getRound() {
@@ -127,6 +148,31 @@ public class LocationVisit implements Serializable {
         this.hierarchy4 = village;
         clearLevelsBelow(4);
     }
+    
+    public void setHierarchy5(LocationHierarchy village) {
+        this.hierarchy5 = village;
+        clearLevelsBelow(5);
+    }
+    
+    public void setHierarchy6(LocationHierarchy village) {
+        this.hierarchy6 = village;
+        clearLevelsBelow(6);
+    }
+    
+    public void setHierarchy7(LocationHierarchy village) {
+        this.hierarchy7 = village;
+        clearLevelsBelow(7);
+    }
+    
+    public void setHierarchy8(LocationHierarchy village) {
+        this.hierarchy8 = village;
+        clearLevelsBelow(8);
+    }
+    
+    public void setHierarchy9(LocationHierarchy village) {
+        this.hierarchy9 = village;
+        clearLevelsBelow(9);
+    }
 
     public void setRound(Round round) {
         this.round = round;
@@ -152,6 +198,26 @@ public class LocationVisit implements Serializable {
 
         if (hierarchy4 == null) {
             return 3;
+        }
+        
+        if (hierarchy5 == null) {
+            return 4;
+        }
+        
+        if (hierarchy6 == null) {
+            return 5;
+        }
+        
+        if (hierarchy7 == null) {
+            return 6;
+        }
+        
+        if (hierarchy8 == null) {
+            return 7;
+        }
+        
+        if (hierarchy9 == null) {
+            return 8;
         }
 
         if (round == null) {

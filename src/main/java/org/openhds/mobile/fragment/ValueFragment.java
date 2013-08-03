@@ -61,7 +61,9 @@ public class ValueFragment extends ListFragment implements LoaderCallbacks<Curso
     private ValueListener listener;
 
     private enum Displayed {
-        HIERARCHY_1, HIERARCHY_2, HIERARCHY_3, HIERARCHY_4, ROUND, LOCATION, INDIVIDUAL;
+        HIERARCHY_1, HIERARCHY_2, HIERARCHY_3, HIERARCHY_4,
+        HIERARCHY_5,HIERARCHY_6,HIERARCHY_7,HIERARCHY_8,HIERARCHY_9,
+        ROUND, LOCATION, INDIVIDUAL;
     }
 
     public interface ValueListener {
@@ -72,6 +74,16 @@ public class ValueFragment extends ListFragment implements LoaderCallbacks<Curso
         void onHierarchy3Selected(LocationHierarchy hierarchy);
         
         void onHierarchy4Selected(LocationHierarchy village);
+        
+        void onHierarchy5Selected(LocationHierarchy village);
+        
+        void onHierarchy6Selected(LocationHierarchy village);
+        
+        void onHierarchy7Selected(LocationHierarchy village);
+        
+        void onHierarchy8Selected(LocationHierarchy village);
+        
+        void onHierarchy9Selected(LocationHierarchy village);
 
         void onRoundSelected(Round round);
 
@@ -116,6 +128,26 @@ public class ValueFragment extends ListFragment implements LoaderCallbacks<Curso
             LocationHierarchy village = Converter.convertToHierarchy(cursor);
             listener.onHierarchy4Selected(village);
             break;
+        case HIERARCHY_5:
+            LocationHierarchy locHierarchy5 = Converter.convertToHierarchy(cursor);
+            listener.onHierarchy4Selected(locHierarchy5);
+            break;
+        case HIERARCHY_6:
+            LocationHierarchy locHierarchy6 = Converter.convertToHierarchy(cursor);
+            listener.onHierarchy4Selected(locHierarchy6);
+            break;
+        case HIERARCHY_7:
+            LocationHierarchy locHierarchy7 = Converter.convertToHierarchy(cursor);
+            listener.onHierarchy4Selected(locHierarchy7);
+            break;
+        case HIERARCHY_8:
+            LocationHierarchy locHierarchy8 = Converter.convertToHierarchy(cursor);
+            listener.onHierarchy4Selected(locHierarchy8);
+            break;
+        case HIERARCHY_9:
+            LocationHierarchy locHierarchy9 = Converter.convertToHierarchy(cursor);
+            listener.onHierarchy4Selected(locHierarchy9);
+            break;
         case ROUND:
             Round round = Converter.convertToRound(cursor);
             listener.onRoundSelected(round);
@@ -148,32 +180,49 @@ public class ValueFragment extends ListFragment implements LoaderCallbacks<Curso
         loadHierarchyItemsFromParent(extId);
     }
 
-    private void loadHierarchyItemsFromParent(String parentExtId) {
-        Bundle bundle = new Bundle();
-        bundle.putString("parentExtId", parentExtId);
-        getLoaderManager().restartLoader(REGION_LOADER, bundle, this);
-    }
-
-    /**
-     * Load a village optionally filtered by a parent external id
-     * 
-     * @param parentExtId
-     *            the parent ext it to filter on, or null to list all villages
+    /** Load a village optionally filtered by a parent external id
+     * @param parentExtId the parent ext it to filter on, or null to list all villages
      */
     public void loadHierarchy4(String parentExtId) {
         listCurrentlyDisplayed = Displayed.HIERARCHY_4;
         loadHierarchyItemsFromParent(parentExtId);
     }
+    
+    public void loadHierarchy5(String parentExtId) {
+        listCurrentlyDisplayed = Displayed.HIERARCHY_5;
+        loadHierarchyItemsFromParent(parentExtId);
+    }
+    
+    public void loadHierarchy6(String parentExtId) {
+        listCurrentlyDisplayed = Displayed.HIERARCHY_6;
+        loadHierarchyItemsFromParent(parentExtId);
+    }
+    
+    public void loadHierarchy7(String parentExtId) {
+        listCurrentlyDisplayed = Displayed.HIERARCHY_7;
+        loadHierarchyItemsFromParent(parentExtId);
+    }
+    
+    public void loadHierarchy8(String parentExtId) {
+        listCurrentlyDisplayed = Displayed.HIERARCHY_8;
+        loadHierarchyItemsFromParent(parentExtId);
+    }
+    
+    public void loadHierarchy9(String parentExtId) {
+        listCurrentlyDisplayed = Displayed.HIERARCHY_9;
+        loadHierarchyItemsFromParent(parentExtId);
+    }
 
+    private void loadHierarchyItemsFromParent(String parentExtId) {
+        Bundle bundle = new Bundle();
+        bundle.putString("parentExtId", parentExtId);
+        getLoaderManager().restartLoader(REGION_LOADER, bundle, this);
+    }
+    
     public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
         switch (arg0) {
         case HIERARCHY_LOADER:
             adapter.changeCursorAndColumns(null, HIERARCHY_COLUMNS, VIEW_BINDINGS);
-            Activity thisActivity = getActivity();
-            Uri hierarchyItems = OpenHDS.HierarchyItems.CONTENT_ID_URI_BASE;
-            String hierarchyItemsLevel = OpenHDS.HierarchyItems.COLUMN_HIERARCHY_LEVEL;
-            //CursorLoader(Context context, Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)
-            //Activity is UpdateActivity
             return new CursorLoader(getActivity(), OpenHDS.HierarchyItems.CONTENT_ID_URI_BASE, null,
                     OpenHDS.HierarchyItems.COLUMN_HIERARCHY_LEVEL + " = ?",
                     new String[] { START_HIERARCHY_LEVEL_NAME }, null);
@@ -231,9 +280,6 @@ public class ValueFragment extends ListFragment implements LoaderCallbacks<Curso
     /**
      * Builds an array of strings that will be used as the arguments to an SQL
      * query
-     * 
-     * @param arg1
-     * @return
      */
     private String[] buildArguments(Bundle arg1) {
         List<String> args = new ArrayList<String>();

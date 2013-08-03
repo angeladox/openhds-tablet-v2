@@ -28,7 +28,9 @@ import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 /**
@@ -63,6 +65,8 @@ public class SyncEntitiesTask extends AsyncTask<Void, Integer, Boolean> {
 
     private State state;
     private Entity entity;
+    
+    private ArrayList<String> hierarchies;
 
     private enum State {
         DOWNLOADING, SAVING
@@ -246,8 +250,8 @@ public class SyncEntitiesTask extends AsyncTask<Void, Integer, Boolean> {
     }
 
     private void processHierarchyParams(XmlPullParser parser) throws XmlPullParserException, IOException {
+    	ArrayList<String> hierarchies = new ArrayList<String>();
         parser.nextTag();
-
         values.clear();
         while (notEndOfXmlDoc("locationHierarchies", parser)) {
             ContentValues cv = new ContentValues();
@@ -259,8 +263,9 @@ public class SyncEntitiesTask extends AsyncTask<Void, Integer, Boolean> {
             parser.next(); // <keyIdentifier>
             parser.nextText();
             parser.nextTag(); // <name>
-            cv.put(OpenHDS.HierarchyItems.COLUMN_HIERARCHY_LEVEL, parser.nextText());
 
+            cv.put(OpenHDS.HierarchyItems.COLUMN_HIERARCHY_LEVEL, parser.nextText());
+            
             parser.next(); // </level>
             parser.nextTag();
             cv.put(OpenHDS.HierarchyItems.COLUMN_HIERARCHY_NAME, parser.nextText());
@@ -280,7 +285,7 @@ public class SyncEntitiesTask extends AsyncTask<Void, Integer, Boolean> {
             resolver.bulkInsert(OpenHDS.HierarchyItems.CONTENT_URI, values.toArray(emptyArray));
         }
     }
-
+    
     private boolean notEndOfXmlDoc(String element, XmlPullParser parser) throws XmlPullParserException {
         return !element.equals(parser.getName()) && parser.getEventType() != XmlPullParser.END_TAG && !isCancelled();
     }

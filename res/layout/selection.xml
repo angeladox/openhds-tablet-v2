@@ -22,18 +22,18 @@
 	        android:layout_width="150dp"
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="10dp"
-	        android:layout_marginLeft="20dp"
-	        android:text="Select District" /> 
+	        android:layout_marginLeft="20dp"/> 
+<!-- 	        android:text="@+id/hierarchy1" --> 
 	    
 	    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content">
 	        <TableRow> 
 	            <TextView
+	                android:id="@+id/hierarchy1Header"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:layout_marginLeft="20dp"
-			        android:text="District:"
 			        android:textAppearance="?android:attr/textAppearanceSmall"  />
 	
 		    	<TextView
@@ -67,18 +67,18 @@
 	        android:id="@+id/hierarchy2Btn"
 	        android:layout_width="150dp"
 	        android:layout_height="wrap_content"
-	        android:layout_marginLeft="20dp"
-	        android:text="Select Village" />
+	        android:layout_marginLeft="20dp"/>
+	        <!-- android:text="Select Village"  -->
 	    
 	     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content">  
 	        <TableRow> 
 	            <TextView
+	                android:id="@+id/hierarchy2Header"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:layout_marginLeft="20dp"
-			        android:text="Village:"
 			        android:textAppearance="?android:attr/textAppearanceSmall"  />
 	
 		    	<TextView
@@ -112,18 +112,18 @@
             android:id="@+id/hierarchy3Btn"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Select Subvillage" />
+            android:layout_marginLeft="20dp"/>
+            <!-- android:text="Select Subvillage"  -->
         
          <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">  
             <TableRow> 
                 <TextView
+                    android:id="@+id/hierarchy3Header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="Subvillage:"
                     android:textAppearance="?android:attr/textAppearanceSmall"  />
     
                 <TextView
@@ -157,18 +157,18 @@
 	        android:id="@+id/hierarchy4Btn"
 	        android:layout_width="150dp"
 	        android:layout_height="wrap_content"
-	        android:layout_marginLeft="20dp"
-	        android:text="Select Parent Location" />
+	        android:layout_marginLeft="20dp"/>
+	        <!-- android:text="Select Parent Location"  -->
 	    
 	     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content">  
 	        <TableRow> 
 	            <TextView
+	                android:id="@+id/hierarchy4Header"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:layout_marginLeft="20dp"
-			        android:text="Parent Location:"
 			        android:textAppearance="?android:attr/textAppearanceSmall"  />
 	
 		    	<TextView
@@ -197,6 +197,232 @@
 			        android:textAppearance="?android:attr/textAppearanceSmall"  />
 	        </TableRow> 
 		</TableLayout>
+		
+	        <Button
+            android:id="@+id/hierarchy5Btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"/>
+            <!-- android:text="Select Subvillage"  -->
+        
+         <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">  
+            <TableRow> 
+                <TextView
+                    android:id="@+id/hierarchy5Header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+    
+                <TextView
+                    android:id="@+id/hierarchy5Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:inputType="text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="ExtId:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+            
+                <TextView
+                    android:id="@+id/hierarchy5ExtId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:paddingBottom="10dp"
+                    android:inputType="text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+            </TableRow> 
+        </TableLayout>  
+        
+            <Button
+            android:id="@+id/hierarchy6Btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"/>
+            <!-- android:text="Select Subvillage"  -->
+        
+         <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">  
+            <TableRow> 
+                <TextView
+                    android:id="@+id/hierarchy6Header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+    
+                <TextView
+                    android:id="@+id/hierarchy6Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:inputType="text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="ExtId:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+            
+                <TextView
+                    android:id="@+id/hierarchy6ExtId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:paddingBottom="10dp"
+                    android:inputType="text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+            </TableRow> 
+        </TableLayout>   
+        
+            <Button
+            android:id="@+id/hierarchy7Btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"/>
+            <!-- android:text="Select Subvillage"  -->
+        
+         <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">  
+            <TableRow> 
+                <TextView
+                    android:id="@+id/hierarchy7Header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+    
+                <TextView
+                    android:id="@+id/hierarchy7Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:inputType="text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="ExtId:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+            
+                <TextView
+                    android:id="@+id/hierarchy7ExtId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:paddingBottom="10dp"
+                    android:inputType="text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+            </TableRow> 
+        </TableLayout>   
+        
+            <Button
+            android:id="@+id/hierarchy8Btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"/>
+            <!-- android:text="Select Subvillage"  -->
+        
+         <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">  
+            <TableRow> 
+                <TextView
+                    android:id="@+id/hierarchy8Header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+    
+                <TextView
+                    android:id="@+id/hierarchy8Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:inputType="text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="ExtId:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+            
+                <TextView
+                    android:id="@+id/hierarchy8ExtId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:paddingBottom="10dp"
+                    android:inputType="text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+            </TableRow> 
+        </TableLayout>   
+        
+         
+           <Button
+            android:id="@+id/hierarchy9Btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"/>
+            <!-- android:text="Select Subvillage"  -->
+        
+         <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">  
+            <TableRow> 
+                <TextView
+                    android:id="@+id/hierarchy9Header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+    
+                <TextView
+                    android:id="@+id/hierarchy9Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:inputType="text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="ExtId:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+            
+                <TextView
+                    android:id="@+id/hierarchy9ExtId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:paddingBottom="10dp"
+                    android:inputType="text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"  />
+            </TableRow> 
+        </TableLayout>   
 
       <Button
           android:id="@+id/roundBtn"

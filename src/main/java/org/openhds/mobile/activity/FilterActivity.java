@@ -39,7 +39,11 @@ public class FilterActivity extends Activity implements ValueListener, Selection
         LocationHierarchy hierarchy2 = (LocationHierarchy) getIntent().getExtras().getSerializable("hierarchy2");
         LocationHierarchy hierarchy3 = (LocationHierarchy) getIntent().getExtras().getSerializable("hierarchy3");
         LocationHierarchy hierarchy4 = (LocationHierarchy) getIntent().getExtras().getSerializable("hierarchy4");
-        
+        LocationHierarchy hierarchy5 = (LocationHierarchy) getIntent().getExtras().getSerializable("hierarchy5");
+        LocationHierarchy hierarchy6 = (LocationHierarchy) getIntent().getExtras().getSerializable("hierarchy6");
+        LocationHierarchy hierarchy7 = (LocationHierarchy) getIntent().getExtras().getSerializable("hierarchy7");
+        LocationHierarchy hierarchy8 = (LocationHierarchy) getIntent().getExtras().getSerializable("hierarchy8");
+        LocationHierarchy hierarchy9 = (LocationHierarchy) getIntent().getExtras().getSerializable("hierarchy9");
         Location location = (Location) getIntent().getExtras().getSerializable("location");
         requireGender = getIntent().getExtras().getString("requireGender");
 
@@ -47,6 +51,11 @@ public class FilterActivity extends Activity implements ValueListener, Selection
         selectionFilterFragment.setHierarchy2(hierarchy2.getExtId());
         selectionFilterFragment.setHierarchy3(hierarchy3.getExtId());
         selectionFilterFragment.setHierarchy4(hierarchy4.getExtId());
+        selectionFilterFragment.setHierarchy5(hierarchy5.getExtId());
+        selectionFilterFragment.setHierarchy6(hierarchy6.getExtId());
+        selectionFilterFragment.setHierarchy7(hierarchy7.getExtId());
+        selectionFilterFragment.setHierarchy8(hierarchy8.getExtId());
+        selectionFilterFragment.setHierarchy9(hierarchy9.getExtId());
         selectionFilterFragment.setLocation(location.getExtId());
     }
 
@@ -77,6 +86,26 @@ public class FilterActivity extends Activity implements ValueListener, Selection
     public void onHierarchy4Selected(LocationHierarchy hierarchy) {
         selectionFilterFragment.updateHierarchy4Text(hierarchy.getExtId());
     }
+    
+    public void onHierarchy5Selected(LocationHierarchy hierarchy) {
+        selectionFilterFragment.updateHierarchy5Text(hierarchy.getExtId());
+    }
+    
+    public void onHierarchy6Selected(LocationHierarchy hierarchy) {
+        selectionFilterFragment.updateHierarchy6Text(hierarchy.getExtId());
+    }
+    
+    public void onHierarchy7Selected(LocationHierarchy hierarchy) {
+        selectionFilterFragment.updateHierarchy7Text(hierarchy.getExtId());
+    }
+    
+    public void onHierarchy8Selected(LocationHierarchy hierarchy) {
+        selectionFilterFragment.updateHierarchy8Text(hierarchy.getExtId());
+    }
+    
+    public void onHierarchy9Selected(LocationHierarchy hierarchy) {
+        selectionFilterFragment.updateHierarchy9Text(hierarchy.getExtId());
+    }
 
     public void onRoundSelected(Round round) {
         // not implemented
@@ -90,16 +119,36 @@ public class FilterActivity extends Activity implements ValueListener, Selection
         valueFragment.loadLocationHierarchy();
     }
 
-    public void onSeeListHierarchy2(String region) {
-        valueFragment.loadHierarchy2(region);
+    public void onSeeListHierarchy2(String locHierarchy) {
+        valueFragment.loadHierarchy2(locHierarchy);
     }
     
-    public void onSeeListHierarchy3(String hierarchyExtId) {
-        valueFragment.loadHierarchy3(hierarchyExtId);
+    public void onSeeListHierarchy3(String locHierarchy) {
+        valueFragment.loadHierarchy3(locHierarchy);
     }
 
-    public void onSeeListHierarchy4(String subregion) {
-        valueFragment.loadHierarchy4(subregion);
+    public void onSeeListHierarchy4(String locHierarchy) {
+        valueFragment.loadHierarchy4(locHierarchy);
+    }
+    
+    public void onSeeListHierarchy5(String locHierarchy) {
+        valueFragment.loadHierarchy5(locHierarchy);
+    }
+    
+    public void onSeeListHierarchy6(String locHierarchy) {
+        valueFragment.loadHierarchy6(locHierarchy);
+    }
+    
+    public void onSeeListHierarchy7(String locHierarchy) {
+        valueFragment.loadHierarchy7(locHierarchy);
+    }
+    
+    public void onSeeListHierarchy8(String locHierarchy) {
+        valueFragment.loadHierarchy8(locHierarchy);
+    }
+    
+    public void onSeeListHierarchy9(String locHierarchy) {
+        valueFragment.loadHierarchy9(locHierarchy);
     }
 
     public void onSeeListLocation(String village) {
