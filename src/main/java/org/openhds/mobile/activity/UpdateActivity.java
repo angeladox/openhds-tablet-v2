@@ -46,10 +46,12 @@ import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -97,15 +99,19 @@ public class UpdateActivity extends Activity implements ValueFragment.ValueListe
     private final FormFiller formFiller = new FormFiller();
     private final StateMachine stateMachine = new StateMachine();
 
-    private LocationVisit locationVisit = new LocationVisit();
+    private LocationVisit locationVisit = new LocationVisit(this.getBaseContext());
     private FilledForm filledForm;
     private AlertDialog xformUnfinishedDialog;
     private boolean showingProgress;
     private Updatable updatable;
+    
+    private SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
+    private String numHierarchies = sp.getString(LocationHierarchyActivity.NUM_HIERARCHIES, "4");
+	private int numHierarchiesInt = Integer.parseInt(numHierarchies);
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        
         setContentView(R.layout.main);
         FieldWorker fw = (FieldWorker) getIntent().getExtras().getSerializable("fieldWorker");
         locationVisit.setFieldWorker(fw);
@@ -657,7 +663,7 @@ public class UpdateActivity extends Activity implements ValueFragment.ValueListe
     }
 
     public void onFinishVisit() {
-        locationVisit = locationVisit.completeVisit(this.getApplicationContext());
+        locationVisit = locationVisit.completeVisit(this.getBaseContext());
         sf.setLocationVisit(locationVisit);
         ef.setLocationVisit(locationVisit);
         stateMachine.transitionTo(State.FINISH_VISIT);
@@ -1028,20 +1034,20 @@ public class UpdateActivity extends Activity implements ValueFragment.ValueListe
         loadHierarchy9ValueData();
     }
 
-    public void onLocation() {
-        locationVisit.clearLevelsBelow(9);
+    public void onLocation() {    	
+        locationVisit.clearLevelsBelow(numHierarchiesInt+1);
         stateMachine.transitionTo(State.SELECT_LOCATION);
         loadLocationValueData();
     }
 
     public void onRound() {
-        locationVisit.clearLevelsBelow(9);
+        locationVisit.clearLevelsBelow(numHierarchiesInt);
         stateMachine.transitionTo(State.SELECT_ROUND);
         loadRoundValueData();
     }
 
     public void onIndividual() {
-        locationVisit.clearLevelsBelow(6);
+        locationVisit.clearLevelsBelow(numHierarchiesInt+2);
         loadIndividualValueData();
     }
 
@@ -1068,27 +1074,27 @@ public class UpdateActivity extends Activity implements ValueFragment.ValueListe
 
     public void onHierarchy4Selected(LocationHierarchy village) {
         locationVisit.setHierarchy4(village);
-        stateMachine.transitionTo(State.SELECT_ROUND);
+        stateMachine.transitionTo(State.SELECT_HIERARCHY_5);
     }
     
     public void onHierarchy5Selected(LocationHierarchy locHierarchy) {
         locationVisit.setHierarchy5(locHierarchy);
-        stateMachine.transitionTo(State.SELECT_ROUND);
+        stateMachine.transitionTo(State.SELECT_HIERARCHY_6);
     }
     
     public void onHierarchy6Selected(LocationHierarchy locHierarchy) {
         locationVisit.setHierarchy6(locHierarchy);
-        stateMachine.transitionTo(State.SELECT_ROUND);
+        stateMachine.transitionTo(State.SELECT_HIERARCHY_7);
     }
     
     public void onHierarchy7Selected(LocationHierarchy locHierarchy) {
         locationVisit.setHierarchy7(locHierarchy);
-        stateMachine.transitionTo(State.SELECT_ROUND);
+        stateMachine.transitionTo(State.SELECT_HIERARCHY_8);
     }
     
     public void onHierarchy8Selected(LocationHierarchy locHierarchy) {
         locationVisit.setHierarchy8(locHierarchy);
-        stateMachine.transitionTo(State.SELECT_ROUND);
+        stateMachine.transitionTo(State.SELECT_HIERARCHY_9);
     }
     
     public void onHierarchy9Selected(LocationHierarchy locHierarchy) {

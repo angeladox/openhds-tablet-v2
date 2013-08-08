@@ -18,11 +18,11 @@ public class SelectionFilterFragment extends Fragment implements OnClickListener
     public interface Listener {
         void onSeeListHierarchy1();
 
-        void onSeeListHierarchy2(String region);
+        void onSeeListHierarchy2(String hierarchy2);
 
-        void onSeeListHierarchy3(String hierarchyExtId);
+        void onSeeListHierarchy3(String hierarchy3);
 
-        void onSeeListHierarchy4(String subregion);
+        void onSeeListHierarchy4(String hierarchy4);
         
         void onSeeListHierarchy5(String hierarchy);
         
@@ -34,7 +34,7 @@ public class SelectionFilterFragment extends Fragment implements OnClickListener
         
         void onSeeListHierarchy9(String hierarchy);
 
-        void onSeeListLocation(String village);
+        void onSeeListLocation(String location);
 
         void onSearch(String location, String firstName, String lastName, String gender);
     }
