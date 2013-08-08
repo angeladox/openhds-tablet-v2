@@ -30,6 +30,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
+import static android.view.View.GONE;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -182,21 +183,25 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 		switch (numHierarchies) {
 		case 1:
 			bindHierarchy1(view);
-			break;			
+			setWidgetsInvisible(view, 2);
+			break;
 		case 2:
 			bindHierarchy1(view);
 			bindHierarchy2(view);
+			setWidgetsInvisible(view, 3);
 			break;
 		case 3:
 			bindHierarchy1(view);
 			bindHierarchy2(view);
 			bindHierarchy3(view);
+			setWidgetsInvisible(view, 4);
 			break;
 		case 4:
 			bindHierarchy1(view);
 			bindHierarchy2(view);
 			bindHierarchy3(view);
 			bindHierarchy4(view);
+			setWidgetsInvisible(view, 5);
 			break;
 		case 5:
 			bindHierarchy1(view);
@@ -204,14 +209,16 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 			bindHierarchy3(view);
 			bindHierarchy4(view);
 			bindHierarchy5(view);
+			setWidgetsInvisible(view, 6);
 			break;
 		case 6:
 			bindHierarchy1(view);
 			bindHierarchy2(view);
 			bindHierarchy3(view);
-			bindHierarchy4(view);	
+			bindHierarchy4(view);
 			bindHierarchy5(view);
 			bindHierarchy6(view);
+			setWidgetsInvisible(view, 7);
 			break;
 		case 7:
 			bindHierarchy1(view);
@@ -221,8 +228,9 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 			bindHierarchy5(view);
 			bindHierarchy6(view);
 			bindHierarchy7(view);
+			setWidgetsInvisible(view, 8);
 			break;
-		case 8:	
+		case 8:
 			bindHierarchy1(view);
 			bindHierarchy2(view);
 			bindHierarchy3(view);
@@ -231,8 +239,9 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 			bindHierarchy6(view);
 			bindHierarchy7(view);
 			bindHierarchy8(view);
+			setWidgetsInvisible(view, 9);
 			break;
-		case 9:	
+		case 9:
 			bindHierarchy1(view);
 			bindHierarchy2(view);
 			bindHierarchy3(view);
@@ -240,7 +249,7 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 			bindHierarchy5(view);
 			bindHierarchy6(view);
 			bindHierarchy7(view);
-			bindHierarchy8(view);	
+			bindHierarchy8(view);
 			bindHierarchy9(view);
 			break;
 		}
@@ -264,9 +273,8 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 		individualLastNameText = (TextView) view.findViewById(R.id.individualLastNameText);
 		individualDobText = (TextView) view.findViewById(R.id.individualDobText);
 	}
-	
 
-	private void bindHierarchy1(View view){
+	private void bindHierarchy1(View view) {
 		hierarchy1Btn = (Button) view.findViewById(R.id.hierarchy1Btn);
 		hierarchy1Btn.setText("Select " + hierarchy1);
 		hierarchy1Btn.setOnClickListener(this);
@@ -275,8 +283,8 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 		hierarchy1NameText = (TextView) view.findViewById(R.id.hierarchy1Name);
 		hierarchy1ExtIdText = (TextView) view.findViewById(R.id.hierarchy1ExtId);
 	}
-	
-	private void bindHierarchy2(View view){
+
+	private void bindHierarchy2(View view) {
 		hierarchy2Btn = (Button) view.findViewById(R.id.hierarchy2Btn);
 		hierarchy2Btn.setText("Select " + hierarchy2);
 		hierarchy2Btn.setOnClickListener(this);
@@ -285,8 +293,8 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 		hierarchy2NameText = (TextView) view.findViewById(R.id.hierarchy2Name);
 		hierarchy2ExtIdText = (TextView) view.findViewById(R.id.hierarchy2ExtId);
 	}
-	
-	private void bindHierarchy3(View view){
+
+	private void bindHierarchy3(View view) {
 		hierarchy3Btn = (Button) view.findViewById(R.id.hierarchy3Btn);
 		hierarchy3Btn.setText("Select " + hierarchy3);
 		hierarchy3Btn.setOnClickListener(this);
@@ -295,8 +303,8 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 		hierarchy3Header = (TextView) view.findViewById(R.id.hierarchy3Header);
 		hierarchy3Header.setText(hierarchy3 + ":");
 	}
-	
-	private void bindHierarchy4(View view){
+
+	private void bindHierarchy4(View view) {
 		hierarchy4Btn = (Button) view.findViewById(R.id.hierarchy4Btn);
 		hierarchy4Btn.setText("Select " + hierarchy4);
 		hierarchy4Btn.setOnClickListener(this);
@@ -305,8 +313,8 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 		hierarchy4Header = (TextView) view.findViewById(R.id.hierarchy4Header);
 		hierarchy4Header.setText(hierarchy4 + ":");
 	}
-	
-	private void bindHierarchy5(View view){
+
+	private void bindHierarchy5(View view) {
 		hierarchy5Btn = (Button) view.findViewById(R.id.hierarchy5Btn);
 		hierarchy5Btn.setText("Select " + hierarchy5);
 		hierarchy5Btn.setOnClickListener(this);
@@ -315,8 +323,8 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 		hierarchy5NameText = (TextView) view.findViewById(R.id.hierarchy5Name);
 		hierarchy5ExtIdText = (TextView) view.findViewById(R.id.hierarchy5ExtId);
 	}
-	
-	private void bindHierarchy6(View view){
+
+	private void bindHierarchy6(View view) {
 		hierarchy6Btn = (Button) view.findViewById(R.id.hierarchy6Btn);
 		hierarchy6Btn.setText("Select " + hierarchy6);
 		hierarchy6Btn.setOnClickListener(this);
@@ -325,8 +333,8 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 		hierarchy6NameText = (TextView) view.findViewById(R.id.hierarchy6Name);
 		hierarchy6ExtIdText = (TextView) view.findViewById(R.id.hierarchy6ExtId);
 	}
-	
-	private void bindHierarchy7(View view){
+
+	private void bindHierarchy7(View view) {
 		hierarchy7Btn = (Button) view.findViewById(R.id.hierarchy7Btn);
 		hierarchy7Btn.setText("Select " + hierarchy7);
 		hierarchy7Btn.setOnClickListener(this);
@@ -335,8 +343,8 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 		hierarchy7NameText = (TextView) view.findViewById(R.id.hierarchy7Name);
 		hierarchy7ExtIdText = (TextView) view.findViewById(R.id.hierarchy7ExtId);
 	}
-	
-	private void bindHierarchy8(View view){
+
+	private void bindHierarchy8(View view) {
 		hierarchy8Btn = (Button) view.findViewById(R.id.hierarchy8Btn);
 		hierarchy8Btn.setText("Select " + hierarchy8);
 		hierarchy8Btn.setOnClickListener(this);
@@ -345,8 +353,8 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 		hierarchy8NameText = (TextView) view.findViewById(R.id.hierarchy8Name);
 		hierarchy8ExtIdText = (TextView) view.findViewById(R.id.hierarchy8ExtId);
 	}
-	
-	private void bindHierarchy9(View view){
+
+	private void bindHierarchy9(View view) {
 		hierarchy9Btn = (Button) view.findViewById(R.id.hierarchy9Btn);
 		hierarchy9Btn.setText("Select " + hierarchy9);
 		hierarchy9Btn.setOnClickListener(this);
@@ -354,6 +362,243 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 		hierarchy9Header.setText(hierarchy9 + ":");
 		hierarchy9NameText = (TextView) view.findViewById(R.id.hierarchy9Name);
 		hierarchy9ExtIdText = (TextView) view.findViewById(R.id.hierarchy9ExtId);
+	}
+
+	private void setWidgetsInvisible(View view, int low) {
+		switch (low) {
+		case 2:
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy2Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy2Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy2Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy2ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy2ExtIdText));
+			// 3
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy3Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy3Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy3Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy3ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy3ExtIdText));
+			// 4
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy4Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy4Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy4Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy4ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy4ExtIdText));
+			// 5
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy5Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy5Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy5Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy5ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy5ExtIdText));
+			// 6
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy6Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6ExtIdText));
+			// 7
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy7Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7ExtIdText));
+			// 8
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy8Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8ExtIdText));
+			// 9
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy9Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9ExtIdText));
+			break;
+		case 3:
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy3Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy3Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy3Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy3ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy3ExtIdText));
+			// 4
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy4Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy4Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy4Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy4ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy4ExtIdText));
+			// 5
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy5Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy5Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy5Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy5ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy5ExtIdText));
+			// 6
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy6Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6ExtIdText));
+			// 7
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy7Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7ExtIdText));
+			// 8
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy8Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8ExtIdText));
+			// 9
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy9Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9ExtIdText));
+			break;
+		case 4:
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy4Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy4Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy4Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy4ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy4ExtIdText));
+			// 5
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy5Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy5Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy5Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy5ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy5ExtIdText));
+			// 6
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy6Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6ExtIdText));
+			// 7
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy7Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7ExtIdText));
+			// 8
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy8Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8ExtIdText));
+			// 9
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy9Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9ExtIdText));
+			break;
+		case 5:
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy5Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy5Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy5Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy5ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy5ExtIdText));
+			// 6
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy6Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6ExtIdText));
+			// 7
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy7Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7ExtIdText));
+			// 8
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy8Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8ExtIdText));
+			// 9
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy9Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9ExtIdText));
+			break;
+		case 6:
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy6Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy6ExtIdText));
+			// 7
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy7Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7ExtIdText));
+			// 8
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy8Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8ExtIdText));
+			// 9
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy9Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9ExtIdText));
+			break;
+		case 7:
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy7Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy7ExtIdText));
+			// 8
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy8Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8ExtIdText));
+			// 9
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy9Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9ExtIdText));
+			break;
+		case 8:
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy8Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy8ExtIdText));
+			// 9
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy9Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9ExtIdText));
+			break;
+		case 9:
+			setButtonInvisible((Button) view.findViewById(R.id.hierarchy9Btn));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9Header));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9Name));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9ExtId));
+			setTextViewInvisible((TextView) view.findViewById(R.id.hierarchy9ExtIdText));
+			break;
+
+		}
+	}
+	private void setButtonInvisible(Button button) {
+		button.setVisibility(GONE);
+	}
+
+	private void setTextViewInvisible(TextView tv) {
+		tv.setVisibility(GONE);
 	}
 
 	private void setHierarchy1() {
