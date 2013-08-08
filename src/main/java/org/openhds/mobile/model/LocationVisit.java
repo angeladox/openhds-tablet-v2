@@ -10,9 +10,14 @@ import java.util.List;
 import org.openhds.mobile.Converter;
 import org.openhds.mobile.OpenHDS;
 import org.openhds.mobile.Queries;
+import org.openhds.mobile.R;
+import org.openhds.mobile.activity.LocationHierarchyActivity;
 
 import android.content.ContentResolver;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.preference.PreferenceManager;
 
 /**
  * A LocationVisit represents a single visit to a specific location. This class
@@ -29,7 +34,7 @@ import android.database.Cursor;
 public class LocationVisit implements Serializable {
 
     private static final long serialVersionUID = -36602612353821830L;
-
+    private Context context;
     private FieldWorker fieldWorker;
     private LocationHierarchy hierarchy1;
     private LocationHierarchy hierarchy2;
@@ -46,13 +51,27 @@ public class LocationVisit implements Serializable {
     private Visit visit;
 
     private Individual selectedIndividual;
+    
+    public LocationVisit(){
+    	
+    }
+    
+    public LocationVisit(Context context){
+    	this.context = context;
+    }
 
-    public LocationVisit completeVisit() {
-        LocationVisit visit = new LocationVisit();
-        visit.fieldWorker = fieldWorker;
+    public LocationVisit completeVisit(Context context) {
+        LocationVisit visit = new LocationVisit(context);
+		visit.fieldWorker = fieldWorker;
         visit.hierarchy1 = hierarchy1;
         visit.hierarchy2 = hierarchy2;
+        visit.hierarchy3 = hierarchy3;
         visit.hierarchy4 = hierarchy4;
+        visit.hierarchy5 = hierarchy5;
+        visit.hierarchy6 = hierarchy6;
+        visit.hierarchy7 = hierarchy7;
+        visit.hierarchy8 = hierarchy8;
+        visit.hierarchy9 = hierarchy9;
         visit.round = round;
 
         return visit;
@@ -110,10 +129,56 @@ public class LocationVisit implements Serializable {
         this.selectedIndividual = selectedIndividual;
     }
 
-    public void setHierarchy1(LocationHierarchy region) {
-        this.hierarchy1 = region;
+    public void setHierarchy1(LocationHierarchy hierarchy) {
+        this.hierarchy1 = hierarchy;
         clearLevelsBelow(1);
     }
+
+    public void setHierarchy2(LocationHierarchy hierarchy) {
+        this.hierarchy2 = hierarchy;
+        clearLevelsBelow(2);
+    }
+    
+    public void setHierarchy3(LocationHierarchy hierarchy3) {
+        this.hierarchy3 = hierarchy3;
+        clearLevelsBelow(3);
+    }
+
+    public void setHierarchy4(LocationHierarchy hierarchy) {
+        this.hierarchy4 = hierarchy;
+        clearLevelsBelow(4);
+    }
+    
+    public void setHierarchy5(LocationHierarchy hierarchy) {
+        this.hierarchy5 = hierarchy;
+        clearLevelsBelow(5);
+    }
+    
+    public void setHierarchy6(LocationHierarchy hierarchy) {
+        this.hierarchy6 = hierarchy;
+        clearLevelsBelow(6);
+    }
+    
+    public void setHierarchy7(LocationHierarchy hierarchy) {
+        this.hierarchy7 = hierarchy;
+        clearLevelsBelow(7);
+    }
+    
+    public void setHierarchy8(LocationHierarchy hierarchy) {
+        this.hierarchy8 = hierarchy;
+        clearLevelsBelow(8);
+    }
+    
+    public void setHierarchy9(LocationHierarchy hierarchy) {
+        this.hierarchy9 = hierarchy;
+        clearLevelsBelow(9);
+    }
+
+    public void setRound(Round round) {
+        this.round = round;
+        clearLevelsBelow(10);
+    }
+
 
     public void clearLevelsBelow(int i) {
         switch (i) {
@@ -126,59 +191,24 @@ public class LocationVisit implements Serializable {
         case 3:
             hierarchy4 = null;
         case 4:
-            round = null;
+        	hierarchy5 = null;
         case 5:
-            location = null;
+        	hierarchy6 = null;
         case 6:
+        	hierarchy7 = null;
+        case 7:
+        	hierarchy8 = null;
+        case 8:
+        	hierarchy9 = null;
+        case 9:
+            round = null;
+        case 10:
+            location = null;
+        case 11:
             selectedIndividual = null;
         }
     }
-
-    public void setHierarchy2(LocationHierarchy subRegion) {
-        this.hierarchy2 = subRegion;
-        clearLevelsBelow(2);
-    }
     
-    public void setHierarchy3(LocationHierarchy hierarchy3) {
-        this.hierarchy3 = hierarchy3;
-        clearLevelsBelow(3);
-    }
-
-    public void setHierarchy4(LocationHierarchy village) {
-        this.hierarchy4 = village;
-        clearLevelsBelow(4);
-    }
-    
-    public void setHierarchy5(LocationHierarchy village) {
-        this.hierarchy5 = village;
-        clearLevelsBelow(5);
-    }
-    
-    public void setHierarchy6(LocationHierarchy village) {
-        this.hierarchy6 = village;
-        clearLevelsBelow(6);
-    }
-    
-    public void setHierarchy7(LocationHierarchy village) {
-        this.hierarchy7 = village;
-        clearLevelsBelow(7);
-    }
-    
-    public void setHierarchy8(LocationHierarchy village) {
-        this.hierarchy8 = village;
-        clearLevelsBelow(8);
-    }
-    
-    public void setHierarchy9(LocationHierarchy village) {
-        this.hierarchy9 = village;
-        clearLevelsBelow(9);
-    }
-
-    public void setRound(Round round) {
-        this.round = round;
-        clearLevelsBelow(5);
-    }
-
     public Location getLocation() {
         return location;
     }
@@ -221,10 +251,10 @@ public class LocationVisit implements Serializable {
         }
 
         if (round == null) {
-            return 4;
+            return 9;
         }
 
-        return 5;
+        return 10;
     }
 
     public void setLocation(Location location) {
@@ -232,37 +262,69 @@ public class LocationVisit implements Serializable {
     }
 
     public void createLocation(ContentResolver resolver) {
-        String locationId = generateLocationId(resolver);
-
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this.context);
+		String numHierarchies = sp.getString(LocationHierarchyActivity.NUM_HIERARCHIES, "4");
+		int numHierarchiesInt = Integer.parseInt(numHierarchies);
+        LocationHierarchy topHierarchy = hierarchy4;
+        switch (numHierarchiesInt){
+        	case 1: 
+        		topHierarchy=hierarchy1;
+        		break;
+        	case 2:
+        		topHierarchy=hierarchy2;
+        		break;
+        	case 3:
+        		topHierarchy=hierarchy3;
+        		break;
+        	case 4:
+        		topHierarchy=hierarchy4;
+        		break;
+        	case 5:
+        		topHierarchy=hierarchy5;
+        		break;
+        	case 6:
+        		topHierarchy=hierarchy6;
+        		break;
+        	case 7:
+        		topHierarchy=hierarchy7;
+        		break;
+        	case 8:
+        		topHierarchy=hierarchy8;
+        		break;
+        	case 9:
+        		topHierarchy=hierarchy9;
+        		break;
+        }
         location = new Location();
+        String locationId = generateLocationId(resolver, topHierarchy);
         location.setExtId(locationId);
-        location.setHierarchy(hierarchy4.getExtId());
+        location.setHierarchy(topHierarchy.getExtId());
     }
 
-    private String generateLocationId(ContentResolver resolver) {
+    private String generateLocationId(ContentResolver resolver, LocationHierarchy topHierarchy) {
         Cursor cursor = resolver.query(OpenHDS.Locations.CONTENT_ID_URI_BASE,
                 new String[] { OpenHDS.Locations.COLUMN_LOCATION_EXTID }, OpenHDS.Locations.COLUMN_LOCATION_EXTID
-                        + " LIKE ?", new String[] { hierarchy4.getExtId() + "%" }, OpenHDS.Locations.COLUMN_LOCATION_EXTID
+                        + " LIKE ?", new String[] { topHierarchy.getExtId() + "%" }, OpenHDS.Locations.COLUMN_LOCATION_EXTID
                         + " DESC");
 
         String generatedId = null;
         if (cursor.moveToFirst()) {
-            generatedId = generateLocationIdFrom(cursor.getString(0));
+            generatedId = generateLocationIdFrom(cursor.getString(0), topHierarchy);
         } else {
-            generatedId = hierarchy4.getExtId() + "01";
+            generatedId = topHierarchy.getExtId() + "01";
         }
 
         cursor.close();
         return generatedId;
     }
 
-    private String generateLocationIdFrom(String lastGeneratedId) {
+    private String generateLocationIdFrom(String lastGeneratedId, LocationHierarchy topHierarchy) {
         try {
             int increment = Integer.parseInt(lastGeneratedId.substring(3, 5));
             int nextIncrement = increment + 1;
-            return String.format(hierarchy4.getExtId() + "%02d", nextIncrement);
+            return String.format(topHierarchy.getExtId() + "%02d", nextIncrement);
         } catch (NumberFormatException e) {
-            return hierarchy4.getExtId() + "01";
+            return topHierarchy.getExtId() + "01";
         }
     }
 

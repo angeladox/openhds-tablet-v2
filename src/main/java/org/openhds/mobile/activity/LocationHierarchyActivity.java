@@ -6,6 +6,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 public class LocationHierarchyActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
@@ -20,11 +21,8 @@ public class LocationHierarchyActivity extends PreferenceActivity implements OnS
     public static String HIERARCHY_7 = "hierarchy7";
     public static String HIERARCHY_8 = "hierarchy8";
     public static String HIERARCHY_9 = "hierarchy9";
-    /*Upon rendering of the Location Hierarchy Activity, the user should be prompted to 
-     * enter the number of location levels they would like for the hierarchy scheme. When
-     * a number is chosen, that number of text field input boxes should be supplied to
-     * receive input.
-     */
+    
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,5 +89,11 @@ public class LocationHierarchyActivity extends PreferenceActivity implements OnS
         	updateHierarchy(HIERARCHY_8);
         else if (key.equals(HIERARCHY_9)) 
         	updateHierarchy(HIERARCHY_9);
+	}
+	
+	public int getNumHierarchies(){
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
+		String numHierarchies = sp.getString(LocationHierarchyActivity.NUM_HIERARCHIES, getString(R.id.numHierarchies));
+		return Integer.parseInt(numHierarchies);
 	}
 }

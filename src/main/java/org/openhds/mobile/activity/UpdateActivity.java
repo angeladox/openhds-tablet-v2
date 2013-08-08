@@ -657,7 +657,7 @@ public class UpdateActivity extends Activity implements ValueFragment.ValueListe
     }
 
     public void onFinishVisit() {
-        locationVisit = locationVisit.completeVisit();
+        locationVisit = locationVisit.completeVisit(this.getApplicationContext());
         sf.setLocationVisit(locationVisit);
         ef.setLocationVisit(locationVisit);
         stateMachine.transitionTo(State.FINISH_VISIT);
@@ -999,43 +999,43 @@ public class UpdateActivity extends Activity implements ValueFragment.ValueListe
     }
     
     public void onHierarchy5() {
-        locationVisit.clearLevelsBelow(3);
+        locationVisit.clearLevelsBelow(4);
         stateMachine.transitionTo(State.SELECT_HIERARCHY_5);
-        loadHierarchy4ValueData();
+        loadHierarchy5ValueData();
     }
     
     public void onHierarchy6() {
-        locationVisit.clearLevelsBelow(3);
+        locationVisit.clearLevelsBelow(5);
         stateMachine.transitionTo(State.SELECT_HIERARCHY_6);
-        loadHierarchy4ValueData();
+        loadHierarchy6ValueData();
     }
     
     public void onHierarchy7() {
-        locationVisit.clearLevelsBelow(3);
+        locationVisit.clearLevelsBelow(6);
         stateMachine.transitionTo(State.SELECT_HIERARCHY_7);
-        loadHierarchy4ValueData();
+        loadHierarchy7ValueData();
     }
     
     public void onHierarchy8() {
-        locationVisit.clearLevelsBelow(3);
+        locationVisit.clearLevelsBelow(7);
         stateMachine.transitionTo(State.SELECT_HIERARCHY_8);
-        loadHierarchy4ValueData();
+        loadHierarchy8ValueData();
     }
     
     public void onHierarchy9() {
-        locationVisit.clearLevelsBelow(3);
+        locationVisit.clearLevelsBelow(8);
         stateMachine.transitionTo(State.SELECT_HIERARCHY_9);
-        loadHierarchy4ValueData();
+        loadHierarchy9ValueData();
     }
 
     public void onLocation() {
-        locationVisit.clearLevelsBelow(5);
+        locationVisit.clearLevelsBelow(9);
         stateMachine.transitionTo(State.SELECT_LOCATION);
         loadLocationValueData();
     }
 
     public void onRound() {
-        locationVisit.clearLevelsBelow(4);
+        locationVisit.clearLevelsBelow(9);
         stateMachine.transitionTo(State.SELECT_ROUND);
         loadRoundValueData();
     }
