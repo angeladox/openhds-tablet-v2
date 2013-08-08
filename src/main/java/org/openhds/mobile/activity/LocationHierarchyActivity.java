@@ -25,14 +25,6 @@ public class LocationHierarchyActivity extends PreferenceActivity implements OnS
      * a number is chosen, that number of text field input boxes should be supplied to
      * receive input.
      */
-    
-    /*  <EditTextPreference
-    		android:id="@+id/numHierarchies"
-            android:key="numHierarchies"
-            android:defaultValue="@string/default_numHierarchies"
-            android:title="@string/numHierarchiesTitle"
-            android:dialogTitle="@string/changeNumHierarchy" />
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
