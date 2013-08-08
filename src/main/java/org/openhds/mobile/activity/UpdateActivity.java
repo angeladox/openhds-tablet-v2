@@ -105,13 +105,14 @@ public class UpdateActivity extends Activity implements ValueFragment.ValueListe
     private boolean showingProgress;
     private Updatable updatable;
     
-    private SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
-    private String numHierarchies = sp.getString(LocationHierarchyActivity.NUM_HIERARCHIES, "4");
-	private int numHierarchiesInt = Integer.parseInt(numHierarchies);
+    private SharedPreferences sp;
+    private String numHierarchies;
+	private int numHierarchiesInt;
+
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+    	
         setContentView(R.layout.main);
         FieldWorker fw = (FieldWorker) getIntent().getExtras().getSerializable("fieldWorker");
         locationVisit.setFieldWorker(fw);
@@ -1035,18 +1036,27 @@ public class UpdateActivity extends Activity implements ValueFragment.ValueListe
     }
 
     public void onLocation() {    	
+    	sp = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
+        numHierarchies = sp.getString(LocationHierarchyActivity.NUM_HIERARCHIES, "4");
+    	numHierarchiesInt = Integer.parseInt(numHierarchies);
         locationVisit.clearLevelsBelow(numHierarchiesInt+1);
         stateMachine.transitionTo(State.SELECT_LOCATION);
         loadLocationValueData();
     }
 
     public void onRound() {
+    	sp = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
+        numHierarchies = sp.getString(LocationHierarchyActivity.NUM_HIERARCHIES, "4");
+    	numHierarchiesInt = Integer.parseInt(numHierarchies);
         locationVisit.clearLevelsBelow(numHierarchiesInt);
         stateMachine.transitionTo(State.SELECT_ROUND);
         loadRoundValueData();
     }
 
     public void onIndividual() {
+    	sp = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
+        numHierarchies = sp.getString(LocationHierarchyActivity.NUM_HIERARCHIES, "4");
+    	numHierarchiesInt = Integer.parseInt(numHierarchies);
         locationVisit.clearLevelsBelow(numHierarchiesInt+2);
         loadIndividualValueData();
     }
