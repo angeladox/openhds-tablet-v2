@@ -46,6 +46,7 @@
 	        </TableRow>
 	        <TableRow>
 	            <TextView
+	                android:id="@+id/hierarchy1ExtIdText"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:layout_marginLeft="20dp"
@@ -91,6 +92,7 @@
 	        </TableRow>
 	        <TableRow>
 	            <TextView
+	                android:id="@+id/hierarchy2ExtIdText"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:layout_marginLeft="20dp"
@@ -136,6 +138,7 @@
             </TableRow>
             <TableRow>
                 <TextView
+                     android:id="@+id/hierarchy3ExtIdText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -181,6 +184,7 @@
 	        </TableRow>
 	        <TableRow>
 	            <TextView
+	                android:id="@+id/hierarchy4ExtIdText"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:layout_marginLeft="20dp"
@@ -203,6 +207,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"/>
+            <!-- android:text="Select Subvillage"  -->
         
          <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
@@ -225,6 +230,7 @@
             </TableRow>
             <TableRow>
                 <TextView
+                    android:id="@+id/hierarchy5ExtIdText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -247,6 +253,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"/>
+            <!-- android:text="Select Subvillage"  -->
         
          <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
@@ -269,6 +276,7 @@
             </TableRow>
             <TableRow>
                 <TextView
+                    android:id="@+id/hierarchy6ExtIdText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -314,6 +322,7 @@
             </TableRow>
             <TableRow>
                 <TextView
+                    android:id="@+id/hierarchy7ExtIdText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -359,6 +368,7 @@
             </TableRow>
             <TableRow>
                 <TextView
+                    android:id="@+id/hierarchy8ExtIdText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -405,6 +415,7 @@
             </TableRow>
             <TableRow>
                 <TextView
+                    android:id="@+id/hierarchy9ExtIdText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
