@@ -28,7 +28,7 @@ public class LocationHierarchyActivity extends PreferenceActivity implements OnS
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.layout.location_hierarchies);
         setTitle(getString(R.string.app_name) + " > " + getString(R.string.configureHierarchies));
-        updateNumHierarchies(NUM_HIERARCHIES);
+        updateNumHierarchiesText(NUM_HIERARCHIES);
         updateHierarchy(HIERARCHY_1);
         updateHierarchy(HIERARCHY_2);
         updateHierarchy(HIERARCHY_3);
@@ -40,7 +40,7 @@ public class LocationHierarchyActivity extends PreferenceActivity implements OnS
         updateHierarchy(HIERARCHY_9);
     }
     
-    private void updateNumHierarchies(String numHierarchies){
+    private void updateNumHierarchiesText(String numHierarchies){
     	EditTextPreference etp = (EditTextPreference) this.getPreferenceScreen().findPreference(numHierarchies);
         
         String s = etp.getText().trim();
@@ -71,8 +71,10 @@ public class LocationHierarchyActivity extends PreferenceActivity implements OnS
     }
     
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-		if (key.equals(HIERARCHY_1)) 
+		if (key.equals(HIERARCHY_1)) {
 			updateHierarchy(HIERARCHY_1);
+			
+		}
 		else if (key.equals(HIERARCHY_2)) 
 			updateHierarchy(HIERARCHY_2);
         else if (key.equals(HIERARCHY_3)) 
@@ -91,7 +93,7 @@ public class LocationHierarchyActivity extends PreferenceActivity implements OnS
         	updateHierarchy(HIERARCHY_9);
 	}
 	
-	public int getNumHierarchies(){
+	private int getNumHierarchies(){
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
 		String numHierarchies = sp.getString(LocationHierarchyActivity.NUM_HIERARCHIES, getString(R.id.numHierarchies));
 		return Integer.parseInt(numHierarchies);
