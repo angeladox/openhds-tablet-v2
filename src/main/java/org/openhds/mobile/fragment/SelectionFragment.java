@@ -1,11 +1,5 @@
 package org.openhds.mobile.fragment;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
-import org.openhds.mobile.OpenHDS;
 import org.openhds.mobile.R;
 import org.openhds.mobile.activity.LocationHierarchyActivity;
 import org.openhds.mobile.model.Individual;
@@ -38,9 +32,6 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 public class SelectionFragment extends Fragment implements OnClickListener {
-
-	private ContentResolver resolver;
-	private static final String START_HIERARCHY_LEVEL_NAME = "Country";
 
 	public static interface Listener {
 		void onHierarchy1();
@@ -176,8 +167,8 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 			hierarchy9 = sp.getString(LocationHierarchyActivity.HIERARCHY_9, getString(R.id.hierarchy9));
 			break;
 		}
-	}	
-	
+	}
+
 	private void bindViews(View view, int numHierarchies) {
 		loginGreetingText = (TextView) view.findViewById(R.id.loginGreetingText);
 		switch (numHierarchies) {
@@ -593,6 +584,7 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 
 		}
 	}
+
 	private void setButtonInvisible(Button button) {
 		button.setVisibility(GONE);
 	}
@@ -602,23 +594,23 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 	}
 
 	private void setHierarchy1() {
-		LocationHierarchy region = locationVisit.getHierarchy1();
-		if (region == null) {
-			region = LocationHierarchy.emptyHierarchy();
+		LocationHierarchy hierarchy1 = locationVisit.getHierarchy1();
+		if (hierarchy1 == null) {
+			hierarchy1 = LocationHierarchy.emptyHierarchy();
 		}
 
-		hierarchy1NameText.setText(region.getName());
-		hierarchy1ExtIdText.setText(region.getExtId());
+		hierarchy1NameText.setText(hierarchy1.getName());
+		hierarchy1ExtIdText.setText(hierarchy1.getExtId());
 	}
 
 	private void setHierarchy2() {
-		LocationHierarchy subRegion = locationVisit.getHierarchy2();
-		if (subRegion == null) {
-			subRegion = LocationHierarchy.emptyHierarchy();
+		LocationHierarchy hierarchy2 = locationVisit.getHierarchy2();
+		if (hierarchy2 == null) {
+			hierarchy2 = LocationHierarchy.emptyHierarchy();
 		}
 
-		hierarchy2NameText.setText(subRegion.getName());
-		hierarchy2ExtIdText.setText(subRegion.getExtId());
+		hierarchy2NameText.setText(hierarchy2.getName());
+		hierarchy2ExtIdText.setText(hierarchy2.getExtId());
 	}
 
 	private void setHierarchy3() {
@@ -632,13 +624,58 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 	}
 
 	private void setHierarchy4() {
-		LocationHierarchy village = locationVisit.getHierarchy4();
-		if (village == null) {
-			village = LocationHierarchy.emptyHierarchy();
+		LocationHierarchy hierarchy4 = locationVisit.getHierarchy4();
+		if (hierarchy4 == null) {
+			hierarchy4 = LocationHierarchy.emptyHierarchy();
 		}
 
-		hierarchy4NameText.setText(village.getName());
-		hierarchy4ExtIdText.setText(village.getExtId());
+		hierarchy4NameText.setText(hierarchy4.getName());
+		hierarchy4ExtIdText.setText(hierarchy4.getExtId());
+	}
+
+	private void setHierarchy5() {
+		LocationHierarchy hierarchy5 = locationVisit.getHierarchy5();
+		if (hierarchy5 == null) {
+			hierarchy5 = LocationHierarchy.emptyHierarchy();
+		}
+		hierarchy5NameText.setText(hierarchy5.getName());
+		hierarchy5ExtIdText.setText(hierarchy5.getExtId());
+	}
+
+	private void setHierarchy6() {
+		LocationHierarchy hierarchy6 = locationVisit.getHierarchy6();
+		if (hierarchy6 == null) {
+			hierarchy6 = LocationHierarchy.emptyHierarchy();
+		}
+		hierarchy6NameText.setText(hierarchy6.getName());
+		hierarchy6ExtIdText.setText(hierarchy6.getExtId());
+	}
+
+	private void setHierarchy7() {
+		LocationHierarchy hierarchy7 = locationVisit.getHierarchy7();
+		if (hierarchy7 == null) {
+			hierarchy7 = LocationHierarchy.emptyHierarchy();
+		}
+		hierarchy7NameText.setText(hierarchy7.getName());
+		hierarchy7ExtIdText.setText(hierarchy7.getExtId());
+	}
+
+	private void setHierarchy8() {
+		LocationHierarchy hierarchy8 = locationVisit.getHierarchy8();
+		if (hierarchy8 == null) {
+			hierarchy8 = LocationHierarchy.emptyHierarchy();
+		}
+		hierarchy8NameText.setText(hierarchy8.getName());
+		hierarchy8ExtIdText.setText(hierarchy8.getExtId());
+	}
+
+	private void setHierarchy9() {
+		LocationHierarchy hierarchy9 = locationVisit.getHierarchy9();
+		if (hierarchy9 == null) {
+			hierarchy9 = LocationHierarchy.emptyHierarchy();
+		}
+		hierarchy9NameText.setText(hierarchy9.getName());
+		hierarchy9ExtIdText.setText(hierarchy9.getExtId());
 	}
 
 	private void setRound() {
@@ -666,6 +703,21 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 		case R.id.hierarchy4Btn:
 			listener.onHierarchy4();
 			break;
+		case R.id.hierarchy5Btn:
+			listener.onHierarchy5();
+			break;
+		case R.id.hierarchy6Btn:
+			listener.onHierarchy6();
+			break;
+		case R.id.hierarchy7Btn:
+			listener.onHierarchy7();
+			break;
+		case R.id.hierarchy8Btn:
+			listener.onHierarchy8();
+			break;
+		case R.id.hierarchy9Btn:
+			listener.onHierarchy9();
+			break;
 		case R.id.locationBtn:
 			listener.onLocation();
 			break;
@@ -684,11 +736,72 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 				+ locationVisit.getFieldWorker().getLastName());
 	}
 
-	public void registerTransitions(StateMachine stateMachine) {
-		registerHierarchy1Listener(stateMachine);
-		registerHierarchy2Listener(stateMachine);
-		registerHierarchy3Listener(stateMachine);
-		registerHierarchy4Listener(stateMachine);
+	public void registerTransitions(StateMachine stateMachine, int numHierarchies) {
+		switch (numHierarchies) {
+		case 1:
+			registerHierarchy1Listener(stateMachine);
+			break;
+		case 2:
+			registerHierarchy1Listener(stateMachine);
+			registerHierarchy2Listener(stateMachine);
+			break;
+		case 3:
+			registerHierarchy1Listener(stateMachine);
+			registerHierarchy2Listener(stateMachine);
+			registerHierarchy3Listener(stateMachine);
+			break;
+		case 4:
+			registerHierarchy1Listener(stateMachine);
+			registerHierarchy2Listener(stateMachine);
+			registerHierarchy3Listener(stateMachine);
+			registerHierarchy4Listener(stateMachine);
+			break;
+		case 5:
+			registerHierarchy1Listener(stateMachine);
+			registerHierarchy2Listener(stateMachine);
+			registerHierarchy3Listener(stateMachine);
+			registerHierarchy4Listener(stateMachine);
+			registerHierarchy5Listener(stateMachine);
+			break;
+		case 6:
+			registerHierarchy1Listener(stateMachine);
+			registerHierarchy2Listener(stateMachine);
+			registerHierarchy3Listener(stateMachine);
+			registerHierarchy4Listener(stateMachine);
+			registerHierarchy5Listener(stateMachine);
+			registerHierarchy6Listener(stateMachine);
+			break;
+		case 7:
+			registerHierarchy1Listener(stateMachine);
+			registerHierarchy2Listener(stateMachine);
+			registerHierarchy3Listener(stateMachine);
+			registerHierarchy4Listener(stateMachine);
+			registerHierarchy5Listener(stateMachine);
+			registerHierarchy6Listener(stateMachine);
+			registerHierarchy7Listener(stateMachine);
+			break;
+		case 8:
+			registerHierarchy1Listener(stateMachine);
+			registerHierarchy2Listener(stateMachine);
+			registerHierarchy3Listener(stateMachine);
+			registerHierarchy4Listener(stateMachine);
+			registerHierarchy5Listener(stateMachine);
+			registerHierarchy6Listener(stateMachine);
+			registerHierarchy7Listener(stateMachine);
+			registerHierarchy8Listener(stateMachine);
+			break;
+		case 9:
+			registerHierarchy1Listener(stateMachine);
+			registerHierarchy2Listener(stateMachine);
+			registerHierarchy3Listener(stateMachine);
+			registerHierarchy4Listener(stateMachine);
+			registerHierarchy5Listener(stateMachine);
+			registerHierarchy6Listener(stateMachine);
+			registerHierarchy7Listener(stateMachine);
+			registerHierarchy8Listener(stateMachine);
+			registerHierarchy9Listener(stateMachine);
+			break;
+		}
 		registerRoundListener(stateMachine);
 		registerLocationListener(stateMachine);
 		registerVisitListener(stateMachine);
@@ -703,10 +816,24 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 			}
 
 			public void onLeaveState() {
-				hierarchy1Btn.setEnabled(true);
-				hierarchy2Btn.setEnabled(true);
-				hierarchy3Btn.setEnabled(true);
-				hierarchy4Btn.setEnabled(true);
+				if (hierarchy1Btn!=null)
+					hierarchy1Btn.setEnabled(true);
+				if (hierarchy2Btn!=null)
+					hierarchy2Btn.setEnabled(true);
+				if (hierarchy3Btn!=null)
+					hierarchy3Btn.setEnabled(true);
+				if (hierarchy4Btn!=null)
+					hierarchy4Btn.setEnabled(true);
+				if (hierarchy5Btn!=null)
+					hierarchy5Btn.setEnabled(true);
+				if (hierarchy6Btn!=null)
+					hierarchy6Btn.setEnabled(true);
+				if (hierarchy7Btn!=null)
+					hierarchy7Btn.setEnabled(true);
+				if (hierarchy8Btn!=null)
+					hierarchy8Btn.setEnabled(true);
+				if (hierarchy9Btn!=null)
+					hierarchy9Btn.setEnabled(true);
 				roundBtn.setEnabled(true);
 			}
 		});
@@ -729,10 +856,24 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 			}
 
 			public void onLeaveState() {
-				hierarchy1Btn.setEnabled(false);
-				hierarchy2Btn.setEnabled(false);
-				hierarchy3Btn.setEnabled(false);
-				hierarchy4Btn.setEnabled(false);
+				if (hierarchy1Btn!=null)
+					hierarchy1Btn.setEnabled(false);
+				if (hierarchy2Btn!=null)
+					hierarchy2Btn.setEnabled(false);
+				if (hierarchy3Btn!=null)
+					hierarchy3Btn.setEnabled(false);
+				if (hierarchy4Btn!=null)
+					hierarchy4Btn.setEnabled(false);
+				if (hierarchy5Btn!=null)
+					hierarchy5Btn.setEnabled(false);
+				if (hierarchy6Btn!=null)
+					hierarchy6Btn.setEnabled(false);
+				if (hierarchy7Btn!=null)
+					hierarchy7Btn.setEnabled(false);
+				if (hierarchy8Btn!=null)
+					hierarchy8Btn.setEnabled(false);
+				if (hierarchy9Btn!=null)
+					hierarchy9Btn.setEnabled(false);
 				roundBtn.setEnabled(false);
 				locationBtn.setEnabled(false);
 			}
@@ -751,30 +892,52 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 			}
 		});
 	}
+	
+	private void registerRoundListener(StateMachine stateMachine) {
+		stateMachine.registerListener(State.SELECT_ROUND, new StateListener() {
+			public void onEnterState() {
+				resetToDefaultState(9, false);
+				roundBtn.setEnabled(true);
+			}
+			public void onLeaveState() {
+				setRound();
+			}
+		});
+	}
 
 	private void registerLocationListener(StateMachine stateMachine) {
 		stateMachine.registerListener(State.SELECT_LOCATION, new StateListener() {
 			public void onEnterState() {
-				resetToDefaultState(5, false);
+				resetToDefaultState(10, false);
 				locationBtn.setEnabled(true);
 			}
-
 			public void onLeaveState() {
 				setLocation();
 			}
 		});
 	}
 
-	private void registerRoundListener(StateMachine stateMachine) {
-		stateMachine.registerListener(State.SELECT_ROUND, new StateListener() {
+	private void registerHierarchy1Listener(StateMachine stateMachine) {
+		stateMachine.registerListener(State.SELECT_HIERARCHY_1, new StateListener() {
 			public void onEnterState() {
-				resetToDefaultState(4, false);
-				roundBtn.setEnabled(true);
+				resetToDefaultState(0, false);
+				hierarchy1Btn.setEnabled(true);
+			}
+			public void onLeaveState() {
+				setHierarchy1();
+			}
+		});
+	}
 
+	private void registerHierarchy2Listener(StateMachine stateMachine) {
+		stateMachine.registerListener(State.SELECT_HIERARCHY_2, new StateListener() {
+			public void onEnterState() {
+				resetToDefaultState(1, false);
+				hierarchy2Btn.setEnabled(true);
 			}
 
 			public void onLeaveState() {
-				setRound();
+				setHierarchy2();
 			}
 		});
 	}
@@ -805,28 +968,67 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 		});
 	}
 
-	private void registerHierarchy2Listener(StateMachine stateMachine) {
-		stateMachine.registerListener(State.SELECT_HIERARCHY_2, new StateListener() {
+	private void registerHierarchy5Listener(StateMachine stateMachine) {
+		stateMachine.registerListener(State.SELECT_HIERARCHY_5, new StateListener() {
 			public void onEnterState() {
-				resetToDefaultState(1, false);
-				hierarchy2Btn.setEnabled(true);
+				resetToDefaultState(4, false);
+				hierarchy5Btn.setEnabled(true);
 			}
 
 			public void onLeaveState() {
-				setHierarchy2();
+				setHierarchy5();
 			}
 		});
 	}
 
-	private void registerHierarchy1Listener(StateMachine stateMachine) {
-		stateMachine.registerListener(State.SELECT_HIERARCHY_1, new StateListener() {
+	private void registerHierarchy6Listener(StateMachine stateMachine) {
+		stateMachine.registerListener(State.SELECT_HIERARCHY_6, new StateListener() {
 			public void onEnterState() {
-				resetToDefaultState(0, false);
-				hierarchy1Btn.setEnabled(true);
+				resetToDefaultState(5, false);
+				hierarchy6Btn.setEnabled(true);
 			}
 
 			public void onLeaveState() {
-				setHierarchy1();
+				setHierarchy6();
+			}
+		});
+	}
+
+	private void registerHierarchy7Listener(StateMachine stateMachine) {
+		stateMachine.registerListener(State.SELECT_HIERARCHY_7, new StateListener() {
+			public void onEnterState() {
+				resetToDefaultState(6, false);
+				hierarchy7Btn.setEnabled(true);
+			}
+
+			public void onLeaveState() {
+				setHierarchy7();
+			}
+		});
+	}
+
+	private void registerHierarchy8Listener(StateMachine stateMachine) {
+		stateMachine.registerListener(State.SELECT_HIERARCHY_8, new StateListener() {
+			public void onEnterState() {
+				resetToDefaultState(7, false);
+				hierarchy8Btn.setEnabled(true);
+			}
+
+			public void onLeaveState() {
+				setHierarchy8();
+			}
+		});
+	}
+
+	private void registerHierarchy9Listener(StateMachine stateMachine) {
+		stateMachine.registerListener(State.SELECT_HIERARCHY_9, new StateListener() {
+			public void onEnterState() {
+				resetToDefaultState(8, false);
+				hierarchy4Btn.setEnabled(true);
+			}
+
+			public void onLeaveState() {
+				setHierarchy9();
 			}
 		});
 	}
@@ -836,22 +1038,46 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 		case 0:
 			hierarchy1Btn.setEnabled(enabled);
 			setHierarchy1();
+			break;
 		case 1:
 			hierarchy2Btn.setEnabled(enabled);
 			setHierarchy2();
+			break;
 		case 2:
 			hierarchy3Btn.setEnabled(enabled);
 			setHierarchy3();
+			break;
 		case 3:
 			hierarchy4Btn.setEnabled(enabled);
 			setHierarchy4();
+			break;
 		case 4:
+			hierarchy5Btn.setEnabled(enabled);
+			setHierarchy5();
+			break;
+		case 5:
+			hierarchy6Btn.setEnabled(enabled);
+			setHierarchy6();
+			break;
+		case 6:
+			hierarchy7Btn.setEnabled(enabled);
+			setHierarchy7();
+		case 7:
+			hierarchy8Btn.setEnabled(enabled);
+			setHierarchy8();
+			break;
+		case 8:
+			hierarchy9Btn.setEnabled(enabled);
+			setHierarchy9();
+			break;
+		case 9:
 			roundBtn.setEnabled(enabled);
 			setRound();
-		case 5:
+			break;
+		case 10:
 			locationBtn.setEnabled(enabled);
 			setLocation();
-		case 6:
+		case 11:
 			individualBtn.setEnabled(enabled);
 			setIndividual();
 		}
