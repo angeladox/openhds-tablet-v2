@@ -1024,7 +1024,7 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 		stateMachine.registerListener(State.SELECT_HIERARCHY_9, new StateListener() {
 			public void onEnterState() {
 				resetToDefaultState(8, false);
-				hierarchy4Btn.setEnabled(true);
+				hierarchy9Btn.setEnabled(true);
 			}
 
 			public void onLeaveState() {

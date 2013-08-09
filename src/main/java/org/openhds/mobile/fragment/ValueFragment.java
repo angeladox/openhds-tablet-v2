@@ -130,23 +130,23 @@ public class ValueFragment extends ListFragment implements LoaderCallbacks<Curso
             break;
         case HIERARCHY_5:
             LocationHierarchy locHierarchy5 = Converter.convertToHierarchy(cursor);
-            listener.onHierarchy4Selected(locHierarchy5);
+            listener.onHierarchy5Selected(locHierarchy5);
             break;
         case HIERARCHY_6:
             LocationHierarchy locHierarchy6 = Converter.convertToHierarchy(cursor);
-            listener.onHierarchy4Selected(locHierarchy6);
+            listener.onHierarchy6Selected(locHierarchy6);
             break;
         case HIERARCHY_7:
             LocationHierarchy locHierarchy7 = Converter.convertToHierarchy(cursor);
-            listener.onHierarchy4Selected(locHierarchy7);
+            listener.onHierarchy7Selected(locHierarchy7);
             break;
         case HIERARCHY_8:
             LocationHierarchy locHierarchy8 = Converter.convertToHierarchy(cursor);
-            listener.onHierarchy4Selected(locHierarchy8);
+            listener.onHierarchy8Selected(locHierarchy8);
             break;
         case HIERARCHY_9:
             LocationHierarchy locHierarchy9 = Converter.convertToHierarchy(cursor);
-            listener.onHierarchy4Selected(locHierarchy9);
+            listener.onHierarchy9Selected(locHierarchy9);
             break;
         case ROUND:
             Round round = Converter.convertToRound(cursor);

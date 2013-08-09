@@ -585,31 +585,60 @@ public class UpdateActivity extends Activity implements ValueFragment.ValueListe
 	}
 
 	private void loadHierarchy4ValueData() {
-		vf.loadHierarchy4(locationVisit.getHierarchy4().getExtId());
+		vf.loadHierarchy4(locationVisit.getHierarchy3().getExtId());
 	}
 
 	private void loadHierarchy5ValueData() {
-		vf.loadHierarchy5(locationVisit.getHierarchy5().getExtId());
+		vf.loadHierarchy5(locationVisit.getHierarchy4().getExtId());
 	}
 
 	private void loadHierarchy6ValueData() {
-		vf.loadHierarchy6(locationVisit.getHierarchy6().getExtId());
+		vf.loadHierarchy6(locationVisit.getHierarchy5().getExtId());
 	}
 
 	private void loadHierarchy7ValueData() {
-		vf.loadHierarchy7(locationVisit.getHierarchy7().getExtId());
+		vf.loadHierarchy7(locationVisit.getHierarchy6().getExtId());
 	}
 
 	private void loadHierarchy8ValueData() {
-		vf.loadHierarchy8(locationVisit.getHierarchy8().getExtId());
+		vf.loadHierarchy8(locationVisit.getHierarchy7().getExtId());
 	}
 
 	private void loadHierarchy9ValueData() {
-		vf.loadHierarchy9(locationVisit.getHierarchy9().getExtId());
+		vf.loadHierarchy9(locationVisit.getHierarchy8().getExtId());
 	}
 
 	private void loadLocationValueData() {
-		vf.loadLocations(locationVisit.getHierarchy4().getExtId());
+		int numHierarchiesInt = getNumHierarchies();
+		switch (numHierarchiesInt) {
+		case 1:
+			vf.loadLocations(locationVisit.getHierarchy1().getExtId());
+			break;
+		case 2:
+			vf.loadLocations(locationVisit.getHierarchy2().getExtId());
+			break;
+		case 3:
+			vf.loadLocations(locationVisit.getHierarchy3().getExtId());
+			break;
+		case 4:
+			vf.loadLocations(locationVisit.getHierarchy4().getExtId());
+			break;
+		case 5:
+			vf.loadLocations(locationVisit.getHierarchy5().getExtId());
+			break;
+		case 6:
+			vf.loadLocations(locationVisit.getHierarchy6().getExtId());
+			break;
+		case 7:
+			vf.loadLocations(locationVisit.getHierarchy7().getExtId());
+			break;
+		case 8:
+			vf.loadLocations(locationVisit.getHierarchy8().getExtId());
+			break;
+		case 9:
+			vf.loadLocations(locationVisit.getHierarchy9().getExtId());
+			break;
+		}
 	}
 
 	private void loadRoundValueData() {
@@ -1109,7 +1138,10 @@ public class UpdateActivity extends Activity implements ValueFragment.ValueListe
 
 	public void onHierarchy1Selected(LocationHierarchy hierarchy) {
 		locationVisit.setHierarchy1(hierarchy);
-		stateMachine.transitionTo(State.SELECT_HIERARCHY_2);
+		if (getNumHierarchies() == 1)
+			stateMachine.transitionTo(State.SELECT_ROUND);
+		else
+			stateMachine.transitionTo(State.SELECT_HIERARCHY_2);
 	}
 
 	private void registerTransitions() {
@@ -1120,42 +1152,64 @@ public class UpdateActivity extends Activity implements ValueFragment.ValueListe
 
 	public void onHierarchy2Selected(LocationHierarchy subregion) {
 		locationVisit.setHierarchy2(subregion);
-		stateMachine.transitionTo(State.SELECT_HIERARCHY_3);
+		if (getNumHierarchies() == 2)
+			stateMachine.transitionTo(State.SELECT_ROUND);
+		else
+			stateMachine.transitionTo(State.SELECT_HIERARCHY_3);
 	}
 
 	public void onHierarchy3Selected(LocationHierarchy hierarchy) {
 		locationVisit.setHierarchy3(hierarchy);
-		stateMachine.transitionTo(State.SELECT_HIERARCHY_4);
+		if (getNumHierarchies() == 3)
+			stateMachine.transitionTo(State.SELECT_ROUND);
+		else
+			stateMachine.transitionTo(State.SELECT_HIERARCHY_4);
 	}
 
 	public void onHierarchy4Selected(LocationHierarchy village) {
 		locationVisit.setHierarchy4(village);
-		stateMachine.transitionTo(State.SELECT_HIERARCHY_5);
+		if (getNumHierarchies() == 4)
+			stateMachine.transitionTo(State.SELECT_ROUND);
+		else
+			stateMachine.transitionTo(State.SELECT_HIERARCHY_5);
 	}
 
 	public void onHierarchy5Selected(LocationHierarchy locHierarchy) {
 		locationVisit.setHierarchy5(locHierarchy);
-		stateMachine.transitionTo(State.SELECT_HIERARCHY_6);
+		if (getNumHierarchies() == 5)
+			stateMachine.transitionTo(State.SELECT_ROUND);
+		else
+			stateMachine.transitionTo(State.SELECT_HIERARCHY_6);
 	}
 
 	public void onHierarchy6Selected(LocationHierarchy locHierarchy) {
 		locationVisit.setHierarchy6(locHierarchy);
-		stateMachine.transitionTo(State.SELECT_HIERARCHY_7);
+		if (getNumHierarchies() == 6)
+			stateMachine.transitionTo(State.SELECT_ROUND);
+		else
+			stateMachine.transitionTo(State.SELECT_HIERARCHY_7);
 	}
 
 	public void onHierarchy7Selected(LocationHierarchy locHierarchy) {
 		locationVisit.setHierarchy7(locHierarchy);
-		stateMachine.transitionTo(State.SELECT_HIERARCHY_8);
+		if (getNumHierarchies() == 7)
+			stateMachine.transitionTo(State.SELECT_ROUND);
+		else
+			stateMachine.transitionTo(State.SELECT_HIERARCHY_8);
 	}
 
 	public void onHierarchy8Selected(LocationHierarchy locHierarchy) {
 		locationVisit.setHierarchy8(locHierarchy);
-		stateMachine.transitionTo(State.SELECT_HIERARCHY_9);
+		if (getNumHierarchies() == 8)
+			stateMachine.transitionTo(State.SELECT_ROUND);
+		else
+			stateMachine.transitionTo(State.SELECT_HIERARCHY_9);
 	}
 
 	public void onHierarchy9Selected(LocationHierarchy locHierarchy) {
 		locationVisit.setHierarchy9(locHierarchy);
-		stateMachine.transitionTo(State.SELECT_ROUND);
+		if (getNumHierarchies() == 9)
+			stateMachine.transitionTo(State.SELECT_ROUND);
 	}
 
 	public void onRoundSelected(Round round) {
