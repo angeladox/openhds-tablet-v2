@@ -99,7 +99,7 @@ public class UpdateActivity extends Activity implements ValueFragment.ValueListe
 	private final FormFiller formFiller = new FormFiller();
 	private final StateMachine stateMachine = new StateMachine();
 
-	private LocationVisit locationVisit = new LocationVisit(this.getBaseContext());
+	private LocationVisit locationVisit;
 	private FilledForm filledForm;
 	private AlertDialog xformUnfinishedDialog;
 	private boolean showingProgress;
@@ -111,7 +111,7 @@ public class UpdateActivity extends Activity implements ValueFragment.ValueListe
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		locationVisit = new LocationVisit(this.getBaseContext());
 		setContentView(R.layout.main);
 		FieldWorker fw = (FieldWorker) getIntent().getExtras().getSerializable("fieldWorker");
 		locationVisit.setFieldWorker(fw);
@@ -1118,7 +1118,7 @@ public class UpdateActivity extends Activity implements ValueFragment.ValueListe
 		sp = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
 		numHierarchies = sp.getString(LocationHierarchyActivity.NUM_HIERARCHIES, "4");
 		numHierarchiesInt = Integer.parseInt(numHierarchies);
-		locationVisit.clearLevelsBelow(numHierarchiesInt + 1);
+		locationVisit.clearLevelsBelow(numHierarchiesInt + 2);
 		stateMachine.transitionTo(State.SELECT_LOCATION);
 		loadLocationValueData();
 	}

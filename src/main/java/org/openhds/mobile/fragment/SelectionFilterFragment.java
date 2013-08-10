@@ -161,7 +161,24 @@ public class SelectionFilterFragment extends Fragment implements OnClickListener
             listener.onSeeListHierarchy9(hierarchy8Txt.getText().toString());
             break;
         case R.id.location_see_list:
-            listener.onSeeListLocation(hierarchy9Txt.getText().toString());
+        	if (hierarchy9!=null)
+        		listener.onSeeListLocation(hierarchy9Txt.getText().toString());
+        	else if (hierarchy8!=null)
+        		listener.onSeeListLocation(hierarchy8Txt.getText().toString());
+        	else if (hierarchy7!=null)
+        		listener.onSeeListLocation(hierarchy7Txt.getText().toString());
+        	else if (hierarchy6!=null)
+        		listener.onSeeListLocation(hierarchy6Txt.getText().toString());
+        	else if (hierarchy5!=null)
+        		listener.onSeeListLocation(hierarchy5Txt.getText().toString());
+        	else if (hierarchy4!=null)
+        		listener.onSeeListLocation(hierarchy4Txt.getText().toString());
+        	else if (hierarchy3!=null)
+        		listener.onSeeListLocation(hierarchy3Txt.getText().toString());
+        	else if (hierarchy2!=null)
+        		listener.onSeeListLocation(hierarchy2Txt.getText().toString());
+        	else if (hierarchy1!=null)
+        		listener.onSeeListLocation(hierarchy1Txt.getText().toString());
             break;
         case R.id.searchFilterBtn:
             String gender = "";

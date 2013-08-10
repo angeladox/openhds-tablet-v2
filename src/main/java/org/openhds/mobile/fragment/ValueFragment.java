@@ -180,9 +180,6 @@ public class ValueFragment extends ListFragment implements LoaderCallbacks<Curso
         loadHierarchyItemsFromParent(extId);
     }
 
-    /** Load a village optionally filtered by a parent external id
-     * @param parentExtId the parent ext it to filter on, or null to list all villages
-     */
     public void loadHierarchy4(String parentExtId) {
         listCurrentlyDisplayed = Displayed.HIERARCHY_4;
         loadHierarchyItemsFromParent(parentExtId);
