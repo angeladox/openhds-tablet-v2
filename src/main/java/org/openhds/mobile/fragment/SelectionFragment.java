@@ -13,13 +13,7 @@ import org.openhds.mobile.model.StateMachine.StateListener;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.ContentProvider;
-import android.content.ContentProviderClient;
-import android.content.ContentResolver;
-import android.content.CursorLoader;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -28,7 +22,6 @@ import static android.view.View.GONE;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 public class SelectionFragment extends Fragment implements OnClickListener {
