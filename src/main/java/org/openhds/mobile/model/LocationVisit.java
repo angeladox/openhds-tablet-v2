@@ -53,8 +53,7 @@ public class LocationVisit implements Serializable {
     private Individual selectedIndividual;
     
     public LocationVisit(){
-    	String string = "";
-    	System.out.println(string);
+    	
     }
     
     public LocationVisit(Context context){

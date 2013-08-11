@@ -180,12 +180,14 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 			bindHierarchy1(view);
 			bindHierarchy2(view);
 			setWidgetsInvisible(view, 3);
+			setButtonsInactive(view);
 			break;
 		case 3:
 			bindHierarchy1(view);
 			bindHierarchy2(view);
 			bindHierarchy3(view);
 			setWidgetsInvisible(view, 4);
+			setButtonsInactive(view);
 			break;
 		case 4:
 			bindHierarchy1(view);
@@ -193,6 +195,7 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 			bindHierarchy3(view);
 			bindHierarchy4(view);
 			setWidgetsInvisible(view, 5);
+			setButtonsInactive(view);
 			break;
 		case 5:
 			bindHierarchy1(view);
@@ -201,6 +204,7 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 			bindHierarchy4(view);
 			bindHierarchy5(view);
 			setWidgetsInvisible(view, 6);
+			setButtonsInactive(view);
 			break;
 		case 6:
 			bindHierarchy1(view);
@@ -210,6 +214,7 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 			bindHierarchy5(view);
 			bindHierarchy6(view);
 			setWidgetsInvisible(view, 7);
+			setButtonsInactive(view);
 			break;
 		case 7:
 			bindHierarchy1(view);
@@ -220,6 +225,7 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 			bindHierarchy6(view);
 			bindHierarchy7(view);
 			setWidgetsInvisible(view, 8);
+			setButtonsInactive(view);
 			break;
 		case 8:
 			bindHierarchy1(view);
@@ -231,6 +237,7 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 			bindHierarchy7(view);
 			bindHierarchy8(view);
 			setWidgetsInvisible(view, 9);
+			setButtonsInactive(view);
 			break;
 		case 9:
 			bindHierarchy1(view);
@@ -242,6 +249,7 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 			bindHierarchy7(view);
 			bindHierarchy8(view);
 			bindHierarchy9(view);
+			setButtonsInactive(view);
 			break;
 		}
 		locationBtn = (Button) view.findViewById(R.id.locationBtn);
@@ -353,6 +361,20 @@ public class SelectionFragment extends Fragment implements OnClickListener {
 		hierarchy9Header.setText(hierarchy9 + ":");
 		hierarchy9NameText = (TextView) view.findViewById(R.id.hierarchy9Name);
 		hierarchy9ExtIdText = (TextView) view.findViewById(R.id.hierarchy9ExtId);
+	}
+	
+	private void setButtonsInactive(View view){
+			view.findViewById(R.id.hierarchy2Btn).setEnabled(false);
+			view.findViewById(R.id.hierarchy3Btn).setEnabled(false);
+			view.findViewById(R.id.hierarchy4Btn).setEnabled(false);
+			view.findViewById(R.id.hierarchy5Btn).setEnabled(false);
+			view.findViewById(R.id.hierarchy6Btn).setEnabled(false);
+			view.findViewById(R.id.hierarchy7Btn).setEnabled(false);
+			view.findViewById(R.id.hierarchy8Btn).setEnabled(false);
+			view.findViewById(R.id.hierarchy9Btn).setEnabled(false);
+			view.findViewById(R.id.roundBtn).setEnabled(false);
+			view.findViewById(R.id.locationBtn).setEnabled(false);
+			view.findViewById(R.id.individualBtn).setEnabled(false);			
 	}
 
 	private void setWidgetsInvisible(View view, int low) {
