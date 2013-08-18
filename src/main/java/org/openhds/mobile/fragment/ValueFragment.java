@@ -278,14 +278,14 @@ public class ValueFragment extends ListFragment implements
 	}
 
 	private Loader<Cursor> buildLocationCursorLoader(Bundle arg1) {
-		if (TextUtils.isEmpty(arg1.getString("hierarchyExtId"))) {
+		//if (TextUtils.isEmpty(arg1.getString("hierarchyExtId"))) {
 			return buildCursorLoader(OpenHDS.Locations.CONTENT_ID_URI_BASE,
 					null, null);
-		} else {
+		/*} else {
 			return buildCursorLoader(OpenHDS.Locations.CONTENT_ID_URI_BASE,
 					OpenHDS.Locations.COLUMN_LOCATION_HIERARCHY + " = ?",
 					new String[] { arg1.getString("hierarchyExtId") });
-		}
+		}*/
 	}
 
 	private Loader<Cursor> buildRegionCursorLoader(Bundle arg1) {
