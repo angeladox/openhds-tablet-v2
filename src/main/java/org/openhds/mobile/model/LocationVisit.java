@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.openhds.mobile.Converter;
 import org.openhds.mobile.OpenHDS;
+import org.openhds.mobile.PreferenceContainer;
 import org.openhds.mobile.Queries;
 import org.openhds.mobile.R;
 import org.openhds.mobile.activity.LocationHierarchyActivity;
@@ -34,7 +35,7 @@ import android.preference.PreferenceManager;
 public class LocationVisit implements Serializable {
 
     private static final long serialVersionUID = -36602612353821830L;
-    private Context context;
+    //private Context context;
     private FieldWorker fieldWorker;
     private LocationHierarchy hierarchy1;
     private LocationHierarchy hierarchy2;
@@ -46,8 +47,9 @@ public class LocationVisit implements Serializable {
     private LocationHierarchy hierarchy8;
     private LocationHierarchy hierarchy9;
     private Round round;
+    private int numHierarchies;
 
-    private Location location;
+	private Location location;
     private Visit visit;
 
     private Individual selectedIndividual;
@@ -59,6 +61,14 @@ public class LocationVisit implements Serializable {
   /*  public LocationVisit(Context context){
     	this.context = context;
     }*/
+    
+    public int getNumHierarchies() {
+		return numHierarchies;
+	}
+
+	public void setNumHierarchies(int numHierarchies) {
+		this.numHierarchies = numHierarchies;
+	}
 
     public LocationVisit completeVisit(Context context) {
         LocationVisit visit = new LocationVisit();//context);
@@ -265,7 +275,9 @@ public class LocationVisit implements Serializable {
         //SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this.context);
 		//String numHierarchies = sp.getString(LocationHierarchyActivity.NUM_HIERARCHIES, "4");
 		//int numHierarchiesInt = Integer.parseInt(numHierarchies);
-    	int numHierarchiesInt = 8;
+    //	pc = PreferenceContainer.getInstance();
+    //	int numHierarchiesInt = pc.getNumHierarchies();
+    	int numHierarchiesInt = getNumHierarchies();
         LocationHierarchy topHierarchy = hierarchy4;
         switch (numHierarchiesInt){
         	case 1: 

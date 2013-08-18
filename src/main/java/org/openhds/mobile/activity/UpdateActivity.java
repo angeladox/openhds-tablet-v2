@@ -115,7 +115,8 @@ public class UpdateActivity extends Activity implements ValueFragment.ValueListe
 		setContentView(R.layout.main);
 		FieldWorker fw = (FieldWorker) getIntent().getExtras().getSerializable("fieldWorker");
 		locationVisit.setFieldWorker(fw);
-
+		locationVisit.setNumHierarchies(this.getNumHierarchies());
+		
 		vf = new ValueFragment();
 		FragmentTransaction txn = getFragmentManager().beginTransaction();
 		txn.add(R.id.middle_col, vf).commit();
