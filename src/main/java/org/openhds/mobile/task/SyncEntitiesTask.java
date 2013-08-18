@@ -65,8 +65,6 @@ public class SyncEntitiesTask extends AsyncTask<Void, Integer, Boolean> {
 
     private State state;
     private Entity entity;
-    
-    private ArrayList<String> hierarchies;
 
     private enum State {
         DOWNLOADING, SAVING

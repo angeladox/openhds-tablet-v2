@@ -56,12 +56,12 @@ public class LocationVisit implements Serializable {
     	
     }
     
-    public LocationVisit(Context context){
+  /*  public LocationVisit(Context context){
     	this.context = context;
-    }
+    }*/
 
     public LocationVisit completeVisit(Context context) {
-        LocationVisit visit = new LocationVisit(context);
+        LocationVisit visit = new LocationVisit();//context);
 		visit.fieldWorker = fieldWorker;
         visit.hierarchy1 = hierarchy1;
         visit.hierarchy2 = hierarchy2;
@@ -262,9 +262,10 @@ public class LocationVisit implements Serializable {
     }
 
     public void createLocation(ContentResolver resolver) {
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this.context);
-		String numHierarchies = sp.getString(LocationHierarchyActivity.NUM_HIERARCHIES, "4");
-		int numHierarchiesInt = Integer.parseInt(numHierarchies);
+        //SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this.context);
+		//String numHierarchies = sp.getString(LocationHierarchyActivity.NUM_HIERARCHIES, "4");
+		//int numHierarchiesInt = Integer.parseInt(numHierarchies);
+    	int numHierarchiesInt = 8;
         LocationHierarchy topHierarchy = hierarchy4;
         switch (numHierarchiesInt){
         	case 1: 

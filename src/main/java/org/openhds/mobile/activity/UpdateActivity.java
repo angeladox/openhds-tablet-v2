@@ -111,7 +111,7 @@ public class UpdateActivity extends Activity implements ValueFragment.ValueListe
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		locationVisit = new LocationVisit(this.getBaseContext());
+		locationVisit = new LocationVisit();//this.getBaseContext());
 		setContentView(R.layout.main);
 		FieldWorker fw = (FieldWorker) getIntent().getExtras().getSerializable("fieldWorker");
 		locationVisit.setFieldWorker(fw);
