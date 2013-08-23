@@ -1133,7 +1133,7 @@ public class UpdateActivity extends Activity implements ValueFragment.ValueListe
 
 	public void onIndividual() {
 		int numHierarchiesInt = getNumHierarchies();
-		locationVisit.clearLevelsBelow(numHierarchiesInt + 2);
+		locationVisit.clearLevelsBelow(numHierarchiesInt + 3);
 		loadIndividualValueData();
 	}
 
@@ -1149,6 +1149,7 @@ public class UpdateActivity extends Activity implements ValueFragment.ValueListe
 		int numHierarchiesInt = getNumHierarchies();
 		sf.registerTransitions(stateMachine, numHierarchiesInt);
 		ef.registerTransitions(stateMachine);
+		
 	}
 
 	public void onHierarchy2Selected(LocationHierarchy subregion) {

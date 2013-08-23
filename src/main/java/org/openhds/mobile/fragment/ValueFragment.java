@@ -266,7 +266,7 @@ public class ValueFragment extends ListFragment implements
 			adapter.changeCursorAndColumns(null, INDIVIDUAL_COLUMNS,
 					VIEW_BINDINGS);
 
-			String filter = buildFitler(arg1);
+			String filter = buildFilter(arg1);
 			String[] args = buildArguments(arg1);
 
 			return new CursorLoader(getActivity(),
@@ -335,7 +335,7 @@ public class ValueFragment extends ListFragment implements
 	 *            bundle which contains possible filtering options
 	 * @return
 	 */
-	private String buildFitler(Bundle arg1) {
+	private String buildFilter(Bundle arg1) {
 		StringBuilder builder = new StringBuilder();
 
 		if (!TextUtils.isEmpty(arg1.getString("location"))) {
